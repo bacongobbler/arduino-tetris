@@ -134,15 +134,15 @@ void displayGame() {
 	display.drawLine(6, 18, 6, display.height()-1, SSD1306_WHITE);
 	display.drawLine(display.width()-6, display.height()-1, 6, display.height()-1, SSD1306_WHITE);
 	display.drawLine(display.width()-6, display.height()-1, display.width()-6, 18, SSD1306_WHITE);
+
+	// draw scoreboard
 	char buf[10];
 	sprintf(buf, "%010d", game.score);
 	display.setCursor(2, 2);
 	display.print(buf);
 
 	// There's a 15px border. 8px to the left, 14px above, 1px below, and 7px to the right.
-	// 8,14 is the starting pixel for the top-left block on the board, so we need to start one pixel before it.
-	//
-	// each block is 3px*3px with a 1px margin
+	// each block is 3px*3px with a 1px margin.
 	for (byte x = 0; x < BOARD_WIDTH; x++) {
 		for (byte y = 0; y < BOARD_HEIGHT; y++) {
 			if (game.board[x][y]) {
